@@ -1,7 +1,7 @@
-Secure Student Data Management API
+#Secure Student Data Management API
 This Express.js-based REST API provides secure student data management. Users can register, log in, and perform CRUD operations on student records. Each user’s data is protected, and token-based authentication ensures secure access.
 
-Features
+##Features
 User Registration and Authentication:
 Users register using their email, name, and password.
 Upon successful login, a session is created, and session data is stored.
@@ -21,12 +21,16 @@ Clone this repository:
 git clone https://github.com/your-username/secure-student-data-api.git
 
 Install dependencies:
+```bash
 cd secure-student-data-api
 npm install
+```
 
 Set up your environment variables (e.g., database connection details, JWT secret).
+```bash
 Start the server:
 npm start
+```
 
 API Endpoints
 POST /register: User registration
