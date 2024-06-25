@@ -1,24 +1,24 @@
-#Secure Student Data Management API
+# Secure Student Data Management API
 - This Express.js-based REST API provides secure student data management. 
 - Users can register, log in, and perform CRUD operations on student records.
 - Each user’s data is protected, and token-based authentication ensures secure access.
 
-##Features
+## Features
 User Registration and Authentication:
 - Users register using their email, name, and password.
 - Upon successful login, a session is created, and session data is stored.
 - Custom middleware ensures that only authorized users can access protected routes.
   
-##Token-Based Authentication:
+## Token-Based Authentication:
 - Token authentication system using JSON Web Tokens (JWT).
 - When a user logs in, a token is generated and sent to the client.
 - Subsequent requests include this token for authentication.
   
-##Student Data Management:
+## Student Data Management:
 - CRUD operations (Create, Read, Update, Delete) for student data.
 - Each user can only access their own student records. Middleware checks session data and token validity.
   
-##Access Limits:
+## Access Limits:
 - Users can access data up to three times using their token.
 
 Installation
@@ -39,7 +39,7 @@ Start the server:
 npm start
 ```
 
-##API Endpoints
+## API Endpoints
 - POST /register: User registration
 - POST /login: User login
 - GET /students: Get all student records
@@ -48,10 +48,10 @@ npm start
 - PUT /students/:id: Update a student record
 - DELETE /students/:id: Delete a student record
   
-##Usage
+## Usage
 - Register a user using /register.
 - Log in using /login to obtain a token.
 - Include the token in the Authorization header for subsequent requests.
 
-##Contributing
+## Contributing
 - Contributions are welcome! Please open an issue or submit a pull request.
