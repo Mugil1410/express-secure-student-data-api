@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const bodyParser = require('body-parser');
 const dbconnection = require('./dbconnection');
 const StudentRouter = require('./routes/StudentRouter');
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 app.use(configSession);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 dbconnection();
 

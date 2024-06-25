@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const User=require('../Models/User')
 require('dotenv').config();
 
-
+const index=async(req,res)=>{
+    res.render('index')
+}
 const register=(async(req,res)=>{
     const {email,password}=req.body
    if(!email||!password){
@@ -65,8 +66,4 @@ const logout=(async (req, res) => {
     })
 })
 
-
-
-
-
-module.exports={register,login,logout}
+module.exports={index,register,login,logout}

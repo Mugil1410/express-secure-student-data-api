@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Student Data Management API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        code {
+            font-family: Consolas, monospace;
+            background-color: #f9f9f9;
+            padding: 2px 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Secure Student Data Management API</h1>
+        <p>This Express.js-based REST API provides secure student data management. Users can register, log in, and perform CRUD operations on student records. Each user's data is protected, and token-based authentication ensures secure access.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>User Registration and Authentication:
+                <ul>
+                    <li>Users register using their email, name, and password.</li>
+                    <li>Upon successful login, a session is created, and session data is stored.</li>
+                    <li>Custom middleware ensures that only authorized users can access protected routes.</li>
+                </ul>
+            </li>
+            <li>Token-Based Authentication:
+                <ul>
+                    <li>Token authentication system using JSON Web Tokens (JWT).</li>
+                    <li>When a user logs in, a token is generated and sent to the client.</li>
+                    <li>Subsequent requests include this token for authentication.</li>
+                </ul>
+            </li>
+            <li>Student Data Management:
+                <ul>
+                    <li>CRUD operations (Create, Read, Update, Delete) for student data.</li>
+                    <li>Each user can only access their own student records.</li>
+                    <li>Middleware checks session data and token validity.</li>
+                </ul>
+            </li>
+            <li>Access Limits:
+                <ul>
+                    <li>Users can access data up to three times using their token.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Installation</h2>
+        <pre><code>git clone https://github.com/your-username/secure-student-data-api.git
+cd secure-student-data-api
+npm install
+# Set up environment variables
+npm start</code></pre>
+
+        <h2>API Endpoints</h2>
+        <p>Replace <code>your-username</code> with your actual GitHub username.</p>
+        <ul>
+            <li><code>POST /register</code>: User registration</li>
+            <li><code>POST /login</code>: User login</li>
+            <li><code>GET /students</code>: Get all student records</li>
+            <!-- Add other endpoints here -->
+        </ul>
+
+        <h2>Usage</h2>
+        <p>Register a user using <code>/register</code>. Log in using <code>/login</code> to obtain a token. Include the token in the <code>Authorization</code> header for subsequent requests.</p>
+
+        <h2>Contributing</h2>
+        <p>Contributions are welcome! Please open an issue or submit a pull request.</p>
+
+        <h2>License</h2>
+        <p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+    </div>
+</body>
+</html>
