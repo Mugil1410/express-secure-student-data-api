@@ -3,93 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Student Data Management API Documentation</title>
+    <title>🔒 Secure Student Data API Documentation</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
+            background-color: #ffffff;
+            color: #000000;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
             background-color: #ffffff;
+            padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #333;
+        h1, h2, h3 {
+            color: #000000;
         }
-        p {
-            color: #666;
+        pre {
+            background-color: #222;
+            color: #ffffff;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px;
         }
-        code {
-            font-family: Consolas, monospace;
-            background-color: #f9f9f9;
-            padding: 2px 4px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
+        pre > code {
+            color: rgb(11, 252, 35);
+        }
+        pre > code > .code{
+            color: #ffffff;
+        }
+
+        img {
+            max-width: 90%;
+            max-height: 70%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Secure Student Data Management API</h1>
-        <p>This Express.js-based REST API provides secure student data management. Users can register, log in, and perform CRUD operations on student records. Each user's data is protected, and token-based authentication ensures secure access.</p>
+    <div class="container mt-5">
+        <h1 class="mb-4">🔒 Secure Student Data API Documentation</h1>
+        <!-- Introduction -->
+        <h2>🚀 Introduction</h2>
+        <p>Welcome to the Secure Student Data API documentation! This API provides secure management of student records, allowing users to register, log in, and perform CRUD operations on student data. Whether you're building an educational platform, managing student information systems, or developing a school administration tool, our API offers essential features to ensure data privacy and security.</p>
+        <p>This sample project demonstrates how to create a RESTful API using Express.js and MongoDB. You'll find details on endpoints, code snippets, and usage instructions below.</p>
+        <!-- Testing with Postman -->
+        <h2>🔧 Testing with Postman</h2>
+        <p>To test the Secure Student Data API, you can use any API testing tool. Here, I am usingPostman:</p>
+        <ol>
+            <li>Install <a href="https://www.postman.com/downloads/">Postman</a> if you haven't already.</li>
+            <li>Open Postman.</li>
+            <li>Create a new request and choose the appropriate HTTP method (e.g., GET, POST, PUT, DELETE).</li>
+            <li>Enter the API endpoint (e.g., <code>https://express-secure-student-data-api.onrender.com/student</code>).</li>
+            <li>Add request headers or query parameters if needed.</li>
+            <li>Send the request and review the response.</li>
+        </ol>
+         <!-- Features -->
+         <h2>Features</h2>
+         <ul>
+             <li><strong>User Registration and Authentication:</strong>
+                 <ul>
+                     <li>Users register using their email, name, and password.</li>
+                     <li>Upon successful login, a session is created, and session data is stored.</li>
+                     <li>Custom middleware ensures that only authorized users can access protected routes.</li>
+                 </ul>
+             </li>
+             <li><strong>Token-Based Authentication:</strong>
+                 <ul>
+                     <li>Token authentication system using JSON Web Tokens (JWT).</li>
+                     <li>When a user logs in, a token is generated and sent to the client.</li>
+                     <li>Subsequent requests include this token for authentication.</li>
+                 </ul>
+             </li>
+             <li><strong>Student Data Management:</strong>
+                 <ul>
+                     <li>CRUD operations (Create, Read, Update, Delete) for student data.</li>
+                     <li>Each user can only access their own student records.</li>
+                     <li>Middleware checks session data and token validity.</li>
+                 </ul>
+             </li>
+             <li><strong>Access Limits:</strong>
+                 <ul>
+                     <li>Users can access data up to three times using their token.</li>
+                 </ul>
+             </li>
+         </ul>
 
-        <h2>Features</h2>
-        <ul>
-            <li>User Registration and Authentication:
-                <ul>
-                    <li>Users register using their email, name, and password.</li>
-                    <li>Upon successful login, a session is created, and session data is stored.</li>
-                    <li>Custom middleware ensures that only authorized users can access protected routes.</li>
-                </ul>
-            </li>
-            <li>Token-Based Authentication:
-                <ul>
-                    <li>Token authentication system using JSON Web Tokens (JWT).</li>
-                    <li>When a user logs in, a token is generated and sent to the client.</li>
-                    <li>Subsequent requests include this token for authentication.</li>
-                </ul>
-            </li>
-            <li>Student Data Management:
-                <ul>
-                    <li>CRUD operations (Create, Read, Update, Delete) for student data.</li>
-                    <li>Each user can only access their own student records.</li>
-                    <li>Middleware checks session data and token validity.</li>
-                </ul>
-            </li>
-            <li>Access Limits:
-                <ul>
-                    <li>Users can access data up to three times using their token.</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h2>Installation</h2>
-        <pre><code>git clone https://github.com/your-username/secure-student-data-api.git
-cd secure-student-data-api
-npm install
-# Set up environment variables
-npm start</code></pre>
-
+        <!-- API Endpoints -->
         <h2>API Endpoints</h2>
-        <p>Replace <code>your-username</code> with your actual GitHub username.</p>
-        <ul>
-            <li><code>POST /register</code>: User registration</li>
-            <li><code>POST /login</code>: User login</li>
-            <li><code>GET /students</code>: Get all student records</li>
-            <!-- Add other endpoints here -->
-        </ul>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Endpoint</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>POST</td>
+                    <td>/</td>
+                    <td>User login</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td>/register</td>
+                    <td>User registration</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/student</td>
+                    <td>Get all student records</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/student/:id</td>
+                    <td>Get a specific student record</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td>/student</td>
+                    <td>Create a new student record</td>
+                </tr>
+                <tr>
+                    <td>PUT</td>
+                    <td>/student</td>
+                    <td>Update a specific student record</td>
+                </tr>
+                <tr>
+                    <td>DELETE</td>
+                    <td>/student</td>
+                    <td>Delete a specific student record</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/logout</td>
+                    <td>User logout</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/token</td>
+                    <td>Get access token</td>
+                </tr>
+                <tr>
+                    <td>GET</td>
+                    <td>/token/getdata</td>
+                    <td>Access data via token</td>
+                </tr>
+            </tbody>
+        </table>
+        
 
+        <!-- Usage -->
         <h2>Usage</h2>
-        <p>Register a user using <code>/register</code>. Log in using <code>/login</code> to obtain a token. Include the token in the <code>Authorization</code> header for subsequent requests.</p>
+        <p>
+            To use the API:
+            <ol>
+                <li>Register a user using <code>/register</code>.</li>
+                <li>Log in using <code>/login</code> to obtain a token.</li>
+                <li>Send all data in req body except <code>/student/:id</code> this follwing route only accepts route parameters</li>
+                <li>While using Token Authendification, Include the token in the <code>authorization</code> header for subsequent requests.</li>
+            </ol>
+        </p>
+        <!-- Code Snippets -->
+        <h2>Code Snippets</h2>
+        <p>Register a user</p>
+        <pre><code>
+POST /register
+//Request body
+<Code class="code">
+{
+    "email": "user@example.com",
+    "name": "John Doe",
+    "password": "securepassword"
+}
+</Code>
+//server response
+<code class="code">user registred successfully, with id "Your id" you can proceed to login</code>
+</code></pre>
 
+<p>Login user</p>
+<pre><code>
+POST /
+//Request body
+<Code class="code">
+{
+"email": "user@example.com",
+"password": "securepassword"
+}
+</Code>
+//server response
+<code class="code">user registred successfully, with id "Your id" you can proceed to login</code>
+</code></pre>
+
+<p>Create student</p>
+<pre><code>
+POST /student
+//Request body
+<Code class="code">
+    {
+        "name": "alice_smith26",
+        "email": "alice.smith@emailprovider.net"
+    }
+</Code>
+//server response
+<code class="code">
+    {
+        "userId": "66792fb67176d53f9b918a90",
+        "name": "alice_smith26",
+        "email": "alice.smith@emailprovider.net",
+        "_id": "667a6f40cde23159520e1116",
+        "__v": 0
+    }
+</code>
+</code></pre>
+
+<p>Get All Student</p>
+<pre><code>
+Get /student
+//Request body
+
+//server response
+<code class="code">
+    [{},{},{}..]
+</code>
+</code></pre>
+
+<p>Get student By id</p>
+<pre><code>
+POST /student/"id"
+
+//server response
+<code class="code">
+    {
+        "userId": "66792fb67176d53f9b918a90",
+        "name": "alice_smith26",
+        "email": "alice.smith@emailprovider.net",
+        "_id": "667a6f40cde23159520e1116",
+        "__v": 0
+    }
+</code>
+</code></pre>
+
+<p>Update student</p>
+<pre><code>
+PUT /student
+//Request body
+<Code class="code">
+    {
+        "_id": "66793abf7176d53f9b918a99",
+        "name": "hari",
+        "email": "benjamin@gmail.com"
+    }
+</Code>
+//server response
+<code class="code">
+    {
+        "message": "Update operation successful",
+        "Updated data": {
+            "_id": "66793abf7176d53f9b918a99",
+            "userId": "66792fb67176d53f9b918a90",
+            "name": "hari",
+            "email": "benjamin@gmail.com",
+            "__v": 0
+        }
+    }
+</code>
+</code></pre>
+
+<p>Delete student</p>
+<pre><code>
+DELETE /student
+//Request body
+<Code class="code">
+    {
+        "_id":"66793abf7176d53f9b918a99"
+    }
+</Code>
+//server response
+<code class="code">
+    Student has been deleted successfully
+</code>
+</code></pre>
+
+<p>Logout User</p>
+<pre><code>
+GET /logout
+//Request body
+
+//server response
+<code class="code">
+    Logout successful
+</code>
+</code></pre>
+        <!-- Output Images -->
+        <h2>Token Authentification</h2>
+        <img src="../public/imgs/gettoken.png" alt="Sample Image 1">
+        <p>Send tmail along with token to get data</p>
+        <img src="../public/imgs/send mail along with token to get data.png" alt="Sample Image 2">
+        <p>Send token in custom header at "authorization"</p>
+        <img src="../public/imgs/get data after sending authorization header.png" alt="Sample Image 3">
+        <p>Token life validation, Each token has 3 Usage limit</p>
+        <img src="../public/imgs/token usage.png" alt="Sample Image 3">
+
+        <!-- Contributing -->
         <h2>Contributing</h2>
-        <p>Contributions are welcome! Please open an issue or submit a pull request.</p>
+        <p>
+            Contributions are welcome! Please open an issue or submit a pull request.
+        </p>
+        <footer class="bg-body-tertiary text-center text-lg-start">
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+              © 2020 Copyright:
+              <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
     </div>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

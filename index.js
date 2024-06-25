@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use(configSession);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/public/', express.static('./public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
