@@ -22,7 +22,7 @@ User Registration and Authentication:
 - Users can access data up to three times using their token.
 
 ## Demo
-- [Api docs]("https://express-secure-student-data-api.onrender.com/)
+- [Api docs](https://express-secure-student-data-api.onrender.com/)
 
 Installation
 Clone this repository:
