@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const User=require('../Models/User')
 require('dotenv').config();
 
-const index=async(req,res)=>{
+const index=(req,res)=>{
     res.render('index')
 }
 const register=(async(req,res)=>{
